@@ -1,71 +1,76 @@
+import Js from '../assets/js.webp';
+import tailwind from '../assets/tailwind.svg';
+import html from '../assets/html.webp';
+import css from '../assets/css.webp';
+import python from '../assets/python.webp';
+import typescript from '../assets/typescript.webp';
+import sql from '../assets/sql.webp';
+import git from '../assets/git.svg';
+import ngoding from '../assets/ngoding.gif';
+
+const frontendSkills = [
+  { name: 'JavaScript', icon: Js },
+  { name: 'React', icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
+  { name: 'Tailwind CSS', icon: tailwind },
+  { name: 'HTML', icon: html },
+  { name: 'CSS', icon: css },
+];
+
+const backendSkills = [
+  { name: 'TypeScript', icon: typescript },
+  { name: 'Node.js', icon: 'https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg' },
+  { name: 'Python', icon: python },
+  { name: 'SQL', icon: sql },
+  { name: 'Git', icon: git },
+];
+
+function SkillSection({ title, skills }) {
+  return (
+    <div className="skills-category">
+      <h3>{title}</h3>
+      <div className="skills-icons">
+        {skills.map((skill, index) => (
+          <div className="skill" key={index}>
+            <a href="#" aria-label={skill.name}>
+              <img className="icon" src={skill.icon} alt={skill.name} />
+            </a>
+            <p>{skill.name}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function AboutSection() {
-    return (
-        <section className="about" id="about">
-            <div className="about-container">
-                <div className="about-content">
-                    <h1>About Me</h1>
-                    <p>
-                        Hi, I'm <strong>Alam</strong>, a passionate <strong>FiveM Developer</strong> and a <strong>Full Stack Developer</strong>. 
-                        I enjoy creating creative and responsive web applications that bring ideas to life. With experience in frontend and backend development, 
-                        I constantly strive to improve my skills and learn new technologies.
-                    </p>
-                    <p>
-                        From building robust APIs to crafting engaging user interfaces, I focus on delivering high-quality solutions that meet user needs.
-                    </p>
-                    <a href="#contact" className="contact-me">Contact Me</a>
-                </div>
-                <div className="about-image">
-                    <img src="https://cdn.discordapp.com/attachments/1266012108634460254/1289799717152096288/5b2765609517d0c00fad3f1cdd3822f3.png?ex=66fa2317&is=66f8d197&hm=c603423868b2c80145e7c5dd964e79edebb52030d34afe4918fbf39edc1282ab&" alt="Profile" />
-                </div>
-            </div>
-            <div className="skills-section">
-                <h2>My Skills</h2>
-                <div className="skills-wrapper">
-                    <div className="skills-category frontend-skills">
-                        <h3>Frontend Development</h3>
-                        <div className="skills-icons">
-                            <a href="#" aria-label="JavaScript">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Fjs.png&w=64&q=75" alt="JavaScript" />
-                            </a>
-          
-                            <a href="#" aria-label="React">
-                                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" />
-                            </a>
-                            <a href="#" aria-label="Tailwind CSS">
-                                <img className="icon" src="https://abyansh.vercel.app/img/tailwind.svg" alt="Tailwind CSS" />
-                            </a>
-                               <a href="#" aria-label="HTML">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Fhtml.png&w=64&q=75" alt="HTML" />
-                            </a>
-                               <a href="#" aria-label="CSS">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Fcss.png&w=64&q=75" alt="CSS" />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="skills-category backend-skills">
-                        <h3>Backend Development</h3>
-                        <div className="skills-icons">
-                                   <a href="#" aria-label="TypeScript">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Ftypescript.png&w=64&q=75" alt="TypeScript" />
-                            </a>
-                            <a href="#" aria-label="Node.js">
-                                <img className="icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js" />
-                            </a>
-                            <a href="#" aria-label="Python">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Fpython.png&w=64&q=75" alt="Python" />
-                            </a>
-                            <a href="#" aria-label="SQL">
-                                <img className="icon" src="https://abyansh.vercel.app/_next/image?url=%2Fimg%2Fmysql.png&w=64&q=75" alt="SQL" />
-                            </a>
-                            <a href="#" aria-label="Git">
-                                <img className="icon" src="https://abyansh.vercel.app/img/git.svg" alt="Git" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="about" id="about">
+      <div className="about-container">
+        <div className="about-content">
+          <h1>About Me</h1>
+          <p>
+            Hi, I'm <strong>Alam</strong>, a passionate <strong>FiveM Developer</strong> and a <strong>Full Stack Developer</strong>. 
+            I enjoy creating creative and responsive web applications that bring ideas to life. With experience in frontend and backend development, 
+            I constantly strive to improve my skills and learn new technologies.
+          </p>
+          <p>
+            From building robust APIs to crafting engaging user interfaces, I focus on delivering high-quality solutions that meet user needs.
+          </p>
+          <a href="#contact" className="contact-me">Contact Me</a>
+        </div>
+        <div className="about-image">
+          <img src={ngoding} alt="Profile" />
+        </div>
+      </div>
+      <div className="skills-section">
+        <h2>My Skills</h2>
+        <div className="skills-wrapper">
+          <SkillSection title="Frontend Development" skills={frontendSkills} />
+          <SkillSection title="Backend Development" skills={backendSkills} />
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default AboutSection;

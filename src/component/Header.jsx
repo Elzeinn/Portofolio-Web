@@ -27,11 +27,10 @@ function Header() {
             <div className={`navbar-nav ${isMenuActive ? 'active' : ''}`}>
                 <a href="#">Home</a>
                 <a href="#about">About</a>
-                <a href="#menu">Menu</a>
+                <a href="#projects">Project</a>
                 <a href="#contact">Contact</a>
             </div>
             <div className="navbar-extra">
-                <a href="#" id='search' dangerouslySetInnerHTML={{ __html: feather.icons.search.toSvg() }} />
                 <a href="#" id='hamburger-menu' onClick={toggleMenu} dangerouslySetInnerHTML={{ __html: feather.icons.menu.toSvg() }} />
             </div>
         </nav>
