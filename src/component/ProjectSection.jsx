@@ -15,10 +15,10 @@ function ProjectSection() {
             link: "https://github.com/Elzeinn/Portofolio-Web"
         },
         {
-            title: "SOON",
-            description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur placeat quae repellendus nesciunt et nostrum sapiente eum maiores! Fuga, facilis.",
-            image: "https://static.pexels.com/photos/305287/pexels-photo-305287.png",
-            link: ""
+            title: "Webs For Fivem",
+            description: "A simple web fivem server with html css and javascript, this is first my project web fivem server",
+            image: "https://cdn.discordapp.com/attachments/1283253237474132069/1290990790470012948/image.png?ex=66fe785d&is=66fd26dd&hm=e8b58bd19f346ff61d7ac137b88825893f37d85779aed195ec874f88395b7f07&",
+            link: "https://github.com/Elzeinn/Project-Website-Fivem"
         },
     ];
     
