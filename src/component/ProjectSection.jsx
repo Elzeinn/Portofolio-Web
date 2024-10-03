@@ -5,13 +5,13 @@ function ProjectSection() {
         {
             title: "Scripting Fivem",
             description: "A complex job system developed for FiveM roleplay servers, with custom jobs, task tracking, and reward systems. ",
-            image: "https://cdn.discordapp.com/attachments/1279456225414877194/1280154135366209586/image.png?ex=66fb4d31&is=66f9fbb1&hm=36d9fa164d65a0a318a8a45e13fab27de907aaeac644086171b83df28fd67814&", // Ganti dengan URL gambar proyek asli
+            image: "https://cdn.discordapp.com/attachments/1266012108634460254/1290747987399540818/image.png?ex=66fee7bd&is=66fd963d&hm=56728b4d4e87a4bfb8b3f547e72b852b4d33a4d19444b908dc03d33b392a4ae1&", // Ganti dengan URL gambar proyek asli
             link: "https://discord.gg/MEQrSCRe"
         },
         {
             title: "Portfolio Website",
             description: "A personal portfolio website showcasing my skills and projects, built with React or HTML CSS and JavaScript.",
-            image: "https://cdn.discordapp.com/attachments/1266012108634460254/1290213466518327347/image.png?ex=66fba46d&is=66fa52ed&hm=958b74503816caedd0b56fd011f27c4aede47b582fbfa4b0bb1b221b5602670b&",
+            image: "https://cdn.discordapp.com/attachments/1266012108634460254/1291249206274556035/image.png?ex=66ff6909&is=66fe1789&hm=f14e518d01213e84265aa927f148974edfa2ebd443e5f0bf24b03e7d60d38d1b&",
             link: "https://github.com/Elzeinn/Portofolio-Web"
         },
         {
