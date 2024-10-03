@@ -8,6 +8,7 @@ import ContactSection from './component/ContactSection.jsx';
 import Loading from './loading/loading.jsx';
 import ExperienceSection from './component/ExperienceSection.jsx';
 
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
