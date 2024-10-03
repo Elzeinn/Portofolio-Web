@@ -49,7 +49,7 @@ function AboutSection() {
         <div className="about-content">
           <h1>About Me</h1>
           <p>
-            Hi, I'm <strong>Alam</strong>, a passionate <strong>FiveM Developer</strong> and a <strong>Full Stack Developer</strong>. 
+            Hi, I'm <strong>Alam</strong>, a passionate <strong>FiveM Developer</strong> and a <strong>Full Stuck Developer</strong>. 
             I enjoy creating creative and responsive web applications that bring ideas to life. With experience in frontend and backend development, 
             I constantly strive to improve my skills and learn new technologies.
           </p>

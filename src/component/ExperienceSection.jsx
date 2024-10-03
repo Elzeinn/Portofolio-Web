@@ -7,19 +7,19 @@ const ExperienceSection = () => {
       position: 'Fivem Developer',
       company: 'Excellent Roleplay',
       duration: 'Desember 2023 - Mei 2024',
-      description: ''
+      description: 'A build server fivem for roleplay with framework esx'
     },
     {
       position: 'Fivem Developer',
       company: 'Indovibes Roleplay',
       duration: 'Juni 2024 - September 2024',
-      description: ''
+      description: 'A build server fivem for roleplay with framework esx'
     },
     {
       position: 'Fivem Developer',
       company: 'Complex ID',
       duration: 'September 2024 - Present',
-      description: ''
+      description: 'A build server fivem for roleplay with framework qbox'
     }
   ];
 
