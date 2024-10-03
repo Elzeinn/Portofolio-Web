@@ -14,6 +14,9 @@ importers:
       feather-icons:
         specifier: ^4.29.2
         version: 4.29.2
+      mywebsite:
+        specifier: 'file:'
+        version: 'file:'
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1033,6 +1036,9 @@ packages:
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
+
+  'mywebsite@file:':
+    resolution: {directory: '', type: directory}
 
   nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
@@ -2408,6 +2414,14 @@ snapshots:
       brace-expansion: 1.1.11
 
   ms@2.1.3: {}
+
+  'mywebsite@file:':
+    dependencies:
+      animate.css: 4.1.1
+      feather-icons: 4.29.2
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      typed.js: 2.1.0
 
   nanoid@3.3.7: {}
 
