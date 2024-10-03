@@ -520,6 +520,60 @@ body {
     background-color: #00b3863a;
 }
 
+/* Experience Section */
+.experience-section {
+  padding: 50px;
+  background:rgba(6,25,39,255);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: var(--primary);
+}
+
+.experience-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.experience-item {
+ background: radial-gradient(201.83% 110.39% at 50% -10.39%, rgba(49, 88, 120, 0.42) 0%, rgba(29, 51, 69, 0.00) 71.08%), #1C2027;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-10px);
+}
+
+.position {
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.company {
+  font-size: 1.2rem;
+  color: #2980b9;
+}
+
+.duration {
+  font-size: 1rem;
+  color: #95a5a6;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+}
+
 
 @media (max-width: 768px) {
     .about-container {

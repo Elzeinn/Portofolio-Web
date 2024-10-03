@@ -6,6 +6,7 @@ import AboutSection from './component/AboutSection.jsx';
 import ProjectSection from './component/ProjectSection.jsx';
 import ContactSection from './component/ContactSection.jsx';
 import Loading from './loading/loading.jsx';
+import ExperienceSection from './component/ExperiencSection.jsx';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,7 @@ function App() {
           <HeroSection />
           <AboutSection />
           <ProjectSection />
+          <ExperienceSection />
           <ContactSection />
         </>
       )}
