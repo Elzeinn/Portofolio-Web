@@ -12,6 +12,7 @@
   "dependencies": {
     "animate.css": "^4.1.1",
     "feather-icons": "^4.29.2",
+    "mywebsite": "file:",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "typed.js": "^2.1.0"
