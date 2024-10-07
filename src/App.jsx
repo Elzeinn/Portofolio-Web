@@ -21,9 +21,9 @@ function App() {
 
   return (
     <>
-      {/* {isLoading ? (
+      {isLoading ? (
         <Loading />
-      ) : ( */}
+      ) : (
         <>
           <Header />
           <HeroSection />
@@ -32,7 +32,7 @@ function App() {
           <ExperienceSection />
           <ContactSection />
         </>
-      {/* )} */}
+       )} 
     </>
   );
 }
