@@ -2,6 +2,7 @@ import feather from 'feather-icons';
 import Typed from 'typed.js';
 import React from 'react';
 import Alam from '../assets/alam.jpg'
+import Ez from '../assets/ez.png'
 
 
 function HeroSection() {
