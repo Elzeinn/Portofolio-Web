@@ -1,0 +1,13 @@
+# Thumbnail Placeholder
+
+Letakkan file gambar thumbnail Anda di sini dengan nama:
+- racing-system.jpg
+- banking-system.jpg
+- job-management.jpg  
+- gang-territory.jpg
+
+Format yang disarankan:
+- Format: JPG atau PNG
+- Resolusi: 1280x720 (16:9 aspect ratio)
+- Ukuran: < 500KB untuk performa optimal
+- Kualitas: 80-90% untuk balance antara kualitas dan ukuran file

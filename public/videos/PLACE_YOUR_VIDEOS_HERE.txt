@@ -1,0 +1,13 @@
+# Video Placeholder
+
+Letakkan file video MP4 Anda di sini dengan nama:
+- racing-system.mp4
+- banking-system.mp4  
+- job-management.mp4
+- gang-territory.mp4
+
+Format yang disarankan:
+- Codec: H.264
+- Resolusi: 1280x720 atau 1920x1080
+- Durasi: 30-120 detik
+- Bitrate: 2-5 Mbps untuk kualitas optimal

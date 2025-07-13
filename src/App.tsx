@@ -3,24 +3,20 @@
 import { useState, useEffect } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
               
-import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Progress } from "@/components/ui/progress"
-import { Github, Mail, Download, Code, Database, Gamepad2, Globe, MessageSquare, ExternalLink } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge"
+import { Github, Mail, MessageSquare } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card"
 import { Button } from "./components/ui/button"
 
-interface Project {
-  title: string
-  description: string
-  tech: string[]
-  features: string[]
-  category: string
-  videoUrl: string
-  thumbnail: string
-}
+// Import data from external files
+import { projects, Project } from "./data/projects"
+import { skills } from "./data/skills"
+import { navItems, contactInfo, aboutContent } from "./data/content"
+import VideoModal from "./components/VideoModal"
+import ProjectCard from "./components/ProjectCard"
 
 export default function FiveMDeveloperCV() {
   const [activeSection, setActiveSection] = useState("home")
@@ -57,54 +53,6 @@ export default function FiveMDeveloperCV() {
     }
   }
 
-  const skills = [
-    { name: "Lua", level: 95, icon: Code },
-    { name: "JavaScript/TypeScript", level: 90, icon: Code },
-    { name: "React", level: 85, icon: Globe },
-    { name: "Three.js", level: 80, icon: Gamepad2 },
-    { name: "SQL/MySQL", level: 85, icon: Database },
-    { name: "Git/GitHub", level: 90, icon: Github },
-  ]
-
-  const projects = [
-    {
-      title: "Racing System",
-      description: "System racing for fivem server with custom UI and dui system",
-      tech: ["Lua", "React", "Tailwind CSS"],
-      features: ["Custom UI", "Track Creator", "MMR System"],
-      category: "Framework",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti dengan URL video YouTube Anda
-      thumbnail: "/api/placeholder/600/400"
-    },
-    {
-      title: "Banking System",
-      description: "Modern banking system with transaction history and security features",
-      tech: ["Lua", "React", "MySQL", "QBCore"],
-      features: ["Account Management", "Transfer System", "Transaction History", "Security Logs"],
-      category: "Framework",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti dengan URL video YouTube Anda
-      thumbnail: "/api/placeholder/600/400"
-    },
-    {
-      title: "Job Management UI",
-      description: "Comprehensive job system with progression and rewards",
-      tech: ["React", "TypeScript", "Tailwind CSS"],
-      features: ["Job Progression", "Reward System", "Statistics Dashboard"],
-      category: "UI/UX",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti dengan URL video YouTube Anda
-      thumbnail: "/api/placeholder/600/400"
-    },
-    {
-      title: "Gang Territory System",
-      description: "Territory control system with real-time battles and management",
-      tech: ["Lua", "React", "WebSocket", "MySQL"],
-      features: ["Territory Control", "Real-time Battles", "Gang Management", "Statistics"],
-      category: "Gameplay",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Ganti dengan URL video YouTube Anda
-      thumbnail: "/api/placeholder/600/400"
-    },
-  ]
-
   const openVideoModal = (project: Project) => {
     setSelectedProject(project)
     setShowVideoModal(true)
@@ -132,15 +80,15 @@ export default function FiveMDeveloperCV() {
             </motion.div>
 
             <nav className="hidden md:flex space-x-8">
-              {["Home", "About", "Projects", "Skills", "Contact"].map((item) => (
+              {navItems.map((item) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  key={item.name}
+                  onClick={() => scrollToSection(item.href)}
                   className={`text-sm font-medium transition-colors hover:text-blue-400 ${
-                    activeSection === item.toLowerCase() ? "text-blue-400" : "text-slate-300"
+                    activeSection === item.href ? "text-blue-400" : "text-slate-300"
                   }`}
                 >
-                  {item}
+                  {item.name}
                 </button>
               ))}
             </nav>
@@ -212,22 +160,12 @@ export default function FiveMDeveloperCV() {
                   <CardTitle className="text-blue-400">Quick Stats</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Years of Experience</span>
-                    <span className="text-white font-semibold">2+</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Projects Completed</span>
-                    <span className="text-white font-semibold">10+</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">Servers Worked With</span>
-                    <span className="text-white font-semibold">4+</span>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-slate-300">GitHub Repositories</span>
-                    <span className="text-white font-semibold">5+</span>
-                  </div>
+                  {aboutContent.stats.map((stat, index) => (
+                    <div key={index} className="flex items-center justify-between">
+                      <span className="text-slate-300">{stat.label}</span>
+                      <span className="text-white font-semibold">{stat.value}</span>
+                    </div>
+                  ))}
                 </CardContent>
               </Card>
             </div>
@@ -252,75 +190,12 @@ export default function FiveMDeveloperCV() {
               <TabsContent value="all" className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   {projects.map((project, index) => (
-                    <motion.div
+                    <ProjectCard
                       key={project.title}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                    >
-                      <Card className="bg-slate-800/50 border-slate-600 hover:border-blue-500/50 transition-colors h-full group">
-                        <CardHeader className="pb-2">
-                          <div className="flex items-center justify-between">
-                            <Badge variant="outline" className="border-blue-500 text-blue-400">
-                              {project.category}
-                            </Badge>
-                            <button
-                              onClick={() => openVideoModal(project)}
-                              className="flex items-center text-slate-400 hover:text-blue-400 transition-colors"
-                            >
-                              <ExternalLink className="h-4 w-4 mr-1" />
-                              <span className="text-xs">Watch Demo</span>
-                            </button>
-                          </div>
-                          
-                          {/* Video Thumbnail */}
-                          <div 
-                            className="relative mt-4 cursor-pointer rounded-lg overflow-hidden bg-slate-700/50 group/video"
-                            onClick={() => openVideoModal(project)}
-                          >
-                            <div className="aspect-video bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center relative">
-                              <div className="absolute inset-0 bg-black/20 group-hover/video:bg-black/40 transition-colors flex items-center justify-center">
-                                <div className="w-16 h-16 bg-blue-500/80 rounded-full flex items-center justify-center group-hover/video:bg-blue-400 transition-colors">
-                                  <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                                  </svg>
-                                </div>
-                              </div>
-                              <div className="text-slate-300 text-sm font-medium">Click to Watch Demo</div>
-                            </div>
-                          </div>
-                          
-                          <CardTitle className="text-white mt-4">{project.title}</CardTitle>
-                          <CardDescription className="text-slate-300">{project.description}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                          <div className="space-y-4">
-                            <div>
-                              <h4 className="text-sm font-semibold text-blue-400 mb-2">Technologies</h4>
-                              <div className="flex flex-wrap gap-2">
-                                {project.tech.map((tech) => (
-                                  <Badge key={tech} variant="secondary" className="bg-slate-700 text-slate-300">
-                                    {tech}
-                                  </Badge>
-                                ))}
-                              </div>
-                            </div>
-                            <div>
-                              <h4 className="text-sm font-semibold text-blue-400 mb-2">Key Features</h4>
-                              <ul className="text-sm text-slate-300 space-y-1">
-                                {project.features.map((feature) => (
-                                  <li key={feature} className="flex items-center">
-                                    <div className="w-1 h-1 bg-blue-400 rounded-full mr-2"></div>
-                                    {feature}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>
+                      project={project}
+                      index={index}
+                      onVideoClick={openVideoModal}
+                    />
                   ))}
                 </div>
               </TabsContent>
@@ -331,75 +206,12 @@ export default function FiveMDeveloperCV() {
                     {projects
                       .filter((project) => project.category === category)
                       .map((project, index) => (
-                        <motion.div
+                        <ProjectCard
                           key={project.title}
-                          initial={{ opacity: 0, y: 50 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.6, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                        >
-                          <Card className="bg-slate-800/50 border-slate-600 hover:border-blue-500/50 transition-colors h-full group">
-                            <CardHeader className="pb-2">
-                              <div className="flex items-center justify-between">
-                                <Badge variant="outline" className="border-blue-500 text-blue-400">
-                                  {project.category}
-                                </Badge>
-                                <button
-                                  onClick={() => openVideoModal(project)}
-                                  className="flex items-center text-slate-400 hover:text-blue-400 transition-colors"
-                                >
-                                  <ExternalLink className="h-4 w-4 mr-1" />
-                                  <span className="text-xs">Watch Demo</span>
-                                </button>
-                              </div>
-                              
-                              {/* Video Thumbnail */}
-                              <div 
-                                className="relative mt-4 cursor-pointer rounded-lg overflow-hidden bg-slate-700/50 group/video"
-                                onClick={() => openVideoModal(project)}
-                              >
-                                <div className="aspect-video bg-gradient-to-br from-slate-600 to-slate-700 flex items-center justify-center relative">
-                                  <div className="absolute inset-0 bg-black/20 group-hover/video:bg-black/40 transition-colors flex items-center justify-center">
-                                    <div className="w-16 h-16 bg-blue-500/80 rounded-full flex items-center justify-center group-hover/video:bg-blue-400 transition-colors">
-                                      <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                  <div className="text-slate-300 text-sm font-medium">Click to Watch Demo</div>
-                                </div>
-                              </div>
-                              
-                              <CardTitle className="text-white mt-4">{project.title}</CardTitle>
-                              <CardDescription className="text-slate-300">{project.description}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                              <div className="space-y-4">
-                                <div>
-                                  <h4 className="text-sm font-semibold text-blue-400 mb-2">Technologies</h4>
-                                  <div className="flex flex-wrap gap-2">
-                                    {project.tech.map((tech) => (
-                                      <Badge key={tech} variant="secondary" className="bg-slate-700 text-slate-300">
-                                        {tech}
-                                      </Badge>
-                                    ))}
-                                  </div>
-                                </div>
-                                <div>
-                                  <h4 className="text-sm font-semibold text-blue-400 mb-2">Key Features</h4>
-                                  <ul className="text-sm text-slate-300 space-y-1">
-                                    {project.features.map((feature) => (
-                                      <li key={feature} className="flex items-center">
-                                        <div className="w-1 h-1 bg-blue-400 rounded-full mr-2"></div>
-                                        {feature}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </motion.div>
+                          project={project}
+                          index={index}
+                          onVideoClick={openVideoModal}
+                        />
                       ))}
                   </div>
                 </TabsContent>
@@ -420,25 +232,67 @@ export default function FiveMDeveloperCV() {
           >
             <h2 className="text-4xl font-bold text-center mb-16 text-blue-400">Technical Skills</h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {skills.map((skill, index) => {
                 const Icon = skill.icon
+                
+                // Function to get badge color and style based on level
+                const getLevelStyle = (level: string) => {
+                  switch (level) {
+                    case "Expert":
+                      return "bg-emerald-500/20 text-emerald-400 border-emerald-500/30"
+                    case "Advanced":
+                      return "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                    case "Intermediate":
+                      return "bg-amber-500/20 text-amber-400 border-amber-500/30"
+                    case "Beginner":
+                      return "bg-slate-500/20 text-slate-400 border-slate-500/30"
+                    default:
+                      return "bg-slate-500/20 text-slate-400 border-slate-500/30"
+                  }
+                }
+
+                const getIconColor = (color: string) => {
+                  switch (color) {
+                    case "blue": return "text-blue-400"
+                    case "yellow": return "text-yellow-400"
+                    case "cyan": return "text-cyan-400"
+                    case "purple": return "text-purple-400"
+                    case "green": return "text-green-400"
+                    case "orange": return "text-orange-400"
+                    case "red": return "text-red-400"
+                    case "emerald": return "text-emerald-400"
+                    case "pink": return "text-pink-400"
+                    default: return "text-blue-400"
+                  }
+                }
+
                 return (
                   <motion.div
                     key={skill.name}
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="bg-slate-700/50 border-slate-600">
+                    <Card className="bg-slate-800/50 border-slate-600 hover:border-slate-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 group">
                       <CardContent className="p-6">
-                        <div className="flex items-center mb-4">
-                          <Icon className="h-6 w-6 text-blue-400 mr-3" />
-                          <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
-                          <span className="ml-auto text-blue-400 font-semibold">{skill.level}%</span>
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center">
+                            <div className={`p-2 rounded-lg bg-slate-700/50 mr-3 group-hover:scale-110 transition-transform duration-300`}>
+                              <Icon className={`h-5 w-5 ${getIconColor(skill.color)}`} />
+                            </div>
+                            <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
+                          </div>
                         </div>
-                        <Progress value={skill.level} className="h-2" />
+                        <div className="flex justify-end">
+                          <Badge 
+                            variant="outline" 
+                            className={`${getLevelStyle(skill.level)} font-medium`}
+                          >
+                            {skill.level}
+                          </Badge>
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -471,15 +325,15 @@ export default function FiveMDeveloperCV() {
                 <div className="space-y-4">
                   <div className="flex items-center">
                     <Mail className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-slate-300">alex.rodriguez@example.com</span>
+                    <span className="text-slate-300">{contactInfo.email}</span>
                   </div>
                   <div className="flex items-center">
                     <MessageSquare className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-slate-300">Discord: AlexDev#1234</span>
+                    <span className="text-slate-300">Discord: {contactInfo.discord}</span>
                   </div>
                   <div className="flex items-center">
                     <Github className="h-5 w-5 text-blue-400 mr-3" />
-                    <span className="text-slate-300">github.com/alexrodriguez</span>
+                    <span className="text-slate-300">{contactInfo.github}</span>
                   </div>
                 </div>
               </div>
@@ -540,68 +394,11 @@ export default function FiveMDeveloperCV() {
       </footer>
 
       {/* Video Modal */}
-      {showVideoModal && selectedProject && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-          <div className="bg-slate-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
-            <div className="flex items-center justify-between p-6 border-b border-slate-700">
-              <div>
-                <h3 className="text-xl font-semibold text-white">{selectedProject.title}</h3>
-                <p className="text-slate-400 text-sm mt-1">Project Demo Video</p>
-              </div>
-              <button
-                onClick={closeVideoModal}
-                className="text-slate-400 hover:text-white transition-colors p-2"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            
-            <div className="p-6">
-              <div className="aspect-video bg-black rounded-lg overflow-hidden">
-                <iframe
-                  src={selectedProject.videoUrl}
-                  title={selectedProject.title}
-                  className="w-full h-full"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              
-              <div className="mt-6 grid md:grid-cols-2 gap-6">
-                <div>
-                  <h4 className="text-sm font-semibold text-blue-400 mb-2">Technologies</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.tech.map((tech: string) => (
-                      <Badge key={tech} variant="secondary" className="bg-slate-700 text-slate-300">
-                        {tech}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 className="text-sm font-semibold text-blue-400 mb-2">Key Features</h4>
-                  <ul className="text-sm text-slate-300 space-y-1">
-                    {selectedProject.features.map((feature: string) => (
-                      <li key={feature} className="flex items-center">
-                        <div className="w-1 h-1 bg-blue-400 rounded-full mr-2"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="mt-6">
-                <p className="text-slate-300 leading-relaxed">{selectedProject.description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <VideoModal 
+        project={selectedProject} 
+        isOpen={showVideoModal} 
+        onClose={closeVideoModal} 
+      />
     </div>
   )
 }
