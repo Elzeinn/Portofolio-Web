@@ -29,8 +29,8 @@ function HeroSection() {
                   <a href="#about" className="cta">About Me</a>
                    
                   <div className="content-icon">
-                      <a href="https://github.com/Elzeinn" dangerouslySetInnerHTML={{ __html: feather.icons.github.toSvg() }}></a>
-                      <a href="https://instagram.com/Elzeinn" dangerouslySetInnerHTML={{ __html: feather.icons.instagram.toSvg() }}></a>
+                      <a href="https://github.com/Alamn" dangerouslySetInnerHTML={{ __html: feather.icons.github.toSvg() }}></a>
+                      <a href="https://instagram.com/Alamn" dangerouslySetInnerHTML={{ __html: feather.icons.instagram.toSvg() }}></a>
                       <a href="" dangerouslySetInnerHTML={{ __html: feather.icons.youtube.toSvg() }}></a>
                       <a href="" dangerouslySetInnerHTML={{ __html: feather.icons.linkedin.toSvg() }}></a>
                     </div>
