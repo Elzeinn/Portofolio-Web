@@ -141,7 +141,7 @@ export default function FiveMDeveloperCV() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6 text-white">Passionate FiveM Developer</h3>
                   <p className="text-slate-300 mb-6 leading-relaxed">
-                    Hi, I'm <strong>Alam</strong>, a dedicated <strong>FiveM Developer</strong> with over <strong>2 years of intensive experience</strong> in creating, optimizing, and customizing immersive gameplay systems for GTA V roleplay servers. I specialize in both <strong>client-side</strong> and <strong>server-side</strong> scripting, delivering high-performance solutions with a focus on security, scalability, and exceptional user experience.
+                    Hi, I'm <strong>Alam</strong>, a dedicated <strong>FiveM Developer</strong> with over <strong>3 years of intensive experience</strong> in creating, optimizing, and customizing immersive gameplay systems for GTA V roleplay servers. I specialize in both <strong>client-side</strong> and <strong>server-side</strong> scripting, delivering high-performance solutions with a focus on security, scalability, and exceptional user experience.
                   </p>
 
                   <p className="text-slate-300 mb-6 leading-relaxed">
